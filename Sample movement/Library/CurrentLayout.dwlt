@@ -44,7 +44,7 @@ MonoBehaviour:
     y: 30
     width: 1424
     height: 752
-  m_MinSize: {x: 681, y: 498}
+  m_MinSize: {x: 683, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
   controlID: 34
@@ -93,8 +93,8 @@ MonoBehaviour:
     y: 0
     width: 284
     height: 478
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 224}
+  m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -215,10 +215,10 @@ MonoBehaviour:
     y: 0
     width: 1147
     height: 752
-  m_MinSize: {x: 404, y: 498}
+  m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 94
+  controlID: 35
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -240,10 +240,10 @@ MonoBehaviour:
     y: 0
     width: 1147
     height: 478
-  m_MinSize: {x: 404, y: 224}
-  m_MaxSize: {x: 8004, y: 4024}
+  m_MinSize: {x: 406, y: 224}
+  m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 95
+  controlID: 36
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -381,20 +381,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/BayatGames/Free Platform Game Assets/Tiles/png/256x256
   m_ViewMode: 1
-  m_StartGridSize: 64
+  m_StartGridSize: 46
   m_LastFolders:
-  - Assets
-  m_LastFoldersGridSize: -1
+  - Assets/BayatGames/Free Platform Game Assets/Tiles/png/256x256
+  m_LastFoldersGridSize: 46
   m_LastProjectPath: C:\Users\kim\Desktop\buwi\MyUnityWork\Sample movement
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: b4360000
-    m_LastClickedID: 14004
-    m_ExpandedIDs: 00000000b4360000ba360000f23a0000363d0000943e00000e3f0000623f0000a6410000884200006e430000d84300007c44000050450000144700009e470000d4470000844a0000de4a0000744b000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: ca3f0000
+    m_LastClickedID: 16330
+    m_ExpandedIDs: 00000000643500006a3500006e370000043800004c380000bc3900000e3a00007e3d0000003e0000543e0000b640000098410000a04200000c430000b84300008c4400005c460000ea46000024470000644800001c490000e04900003a4a0000d04a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -422,7 +422,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b4360000ba360000f23a0000363d0000943e00000e3f0000623f0000a6410000884200006e430000d84300007c44000050450000144700009e470000d4470000844a0000de4a0000744b0000
+    m_ExpandedIDs: 00000000643500006a350000bc390000123c00007e3d0000003e0000543e0000b640000098410000a04200000c430000b84300008c4400005c460000ea46000024470000e04900003a4a0000d04a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -449,8 +449,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c62300001e320000c83200005c610000f0420000
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c62300001e320000c83200005c610000f0420000863c00009e3b0000143c0000e43d0000fe380000483f00001c360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -475,7 +475,7 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
-    m_GridSize: 64
+    m_GridSize: 46
   m_DirectoriesAreaWidth: 188
 --- !u!114 &15
 MonoBehaviour:
@@ -541,9 +541,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 343b0000
       m_LastClickedID: 0
-      m_ExpandedIDs: f2f7ffff
+      m_ExpandedIDs: b8f9ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -599,9 +599,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.82308996, y: 0.64039034, z: -0.016686182}
+    m_Target: {x: 3.00157, y: -0.667294, z: 0.22265625}
     speed: 2
-    m_Value: {x: 0.82308996, y: 0.64039034, z: -0.016686182}
+    m_Value: {x: 3.00157, y: -0.667294, z: 0.22265625}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -627,15 +627,15 @@ MonoBehaviour:
     zGrid:
       m_Target: 1
       speed: 2
-      m_Value: 0
+      m_Value: 1
   m_Rotation:
     m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 37.98519
+    m_Target: 13.779732
     speed: 2
-    m_Value: 37.98519
+    m_Value: 13.779732
   m_Ortho:
     m_Target: 1
     speed: 2
