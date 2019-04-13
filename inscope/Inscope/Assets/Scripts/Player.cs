@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
 
+    private bool attack;//#6
+
 
     private bool facingRight;
 
@@ -25,6 +27,13 @@ public class Player : MonoBehaviour
         myAnimator = GetComponent<Animator>(); // #5
     }
 
+    //#6
+    private void Update()
+    {
+        HandleInput();
+    }
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -33,14 +42,41 @@ public class Player : MonoBehaviour
         HandleMovement(horizontal);
 
         Flip(horizontal);
+
+        HandleAttacks(); //#6
+
+        ResetValues();//#6
     }
 
     private void HandleMovement(float horizontal)
     {
 
-        myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
+        if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))//#6
+        {
+            myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y); // #naa ni siya previous episode gibalhin sa episode 6
+        }       
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal)); // #5
+    }
+
+
+    //#6
+    private void HandleAttacks()
+    {
+        if(attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        {
+            myAnimator.SetTrigger("attack");
+            myRigidbody.velocity = Vector2.zero;//reset velocity when attacking
+        }
+    }
+
+    //#6
+    private void HandleInput()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            attack = true;
+        }
     }
 
     private void Flip(float horizontal)
@@ -56,5 +92,10 @@ public class Player : MonoBehaviour
             transform.localScale = theScale;
 
         }
+    }
+
+    private void ResetValues()
+    {
+        attack = false;
     }
 }
