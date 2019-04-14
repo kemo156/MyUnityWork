@@ -16,8 +16,31 @@ public class Player : MonoBehaviour
 
     private bool slide;//#7
 
-
     private bool facingRight;
+
+
+    //Start Ep 9
+    [SerializeField] 
+    private Transform[] groundPoints;
+
+    [SerializeField]
+    private float groundRadius;
+
+    [SerializeField]
+    private LayerMask whatIsGround;
+
+    private bool isGrounded;
+
+    private bool jump;
+
+    [SerializeField]
+    private bool airControl;
+
+    [SerializeField]
+    private float jumpForce;
+
+    
+    //End Ep 9
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +63,8 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
+
+        isGrounded = IsGrounded();//#ep9
         
         HandleMovement(horizontal);
 
@@ -53,14 +78,24 @@ public class Player : MonoBehaviour
     private void HandleMovement(float horizontal)
     {
 
-        if(!myAnimator.GetBool("slide") && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))//#6 //#7 added !myAnimator.GetBool("slide")
+        if(!myAnimator.GetBool("slide") && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && (isGrounded || airControl))
+            //#6 //#7 added !myAnimator.GetBool("slide")   //#9 added && (isGrounded || airControl))
         {
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y); // #naa ni siya previous episode gibalhin sa episode 6
-        }       
+        }
+
+        /*Episode 9*/
+        if(isGrounded && jump)
+        {
+            isGrounded = false;
+            myRigidbody.AddForce(new Vector2(0, jumpForce));
+        }
+
+        /*End Episode 9*/
 
         /*Episode 7*/
 
-        if(slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide")) //#7
+        if (slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide")) //#7
         {
             myAnimator.SetBool("slide", true);
         }
@@ -71,7 +106,7 @@ public class Player : MonoBehaviour
 
         /*End Episode 7*/
 
-
+        
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal)); // #5
     }
@@ -91,7 +126,16 @@ public class Player : MonoBehaviour
     //#6
     private void HandleInput()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        /*Episode 9*/
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            jump = true;
+        }
+
+        /*End Episode 7*/
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             attack = true;
         }
@@ -127,5 +171,27 @@ public class Player : MonoBehaviour
     {
         attack = false;
         slide = false;//#7
+        jump = false; //#9
+    }
+
+    private bool IsGrounded()//#9
+    {
+        if(myRigidbody.velocity.y <= 0)
+        {
+            foreach(Transform point in groundPoints)
+            {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, groundRadius, whatIsGround);
+
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    if(colliders[i].gameObject != gameObject)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+
     }
 }
