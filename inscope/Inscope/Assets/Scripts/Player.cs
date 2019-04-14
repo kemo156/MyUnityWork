@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 
     private bool attack;//#6
 
+    private bool slide;//#7
+
 
     private bool facingRight;
 
@@ -51,10 +53,25 @@ public class Player : MonoBehaviour
     private void HandleMovement(float horizontal)
     {
 
-        if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))//#6
+        if(!myAnimator.GetBool("slide") && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))//#6 //#7 added !myAnimator.GetBool("slide")
         {
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y); // #naa ni siya previous episode gibalhin sa episode 6
         }       
+
+        /*Episode 7*/
+
+        if(slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide")) //#7
+        {
+            myAnimator.SetBool("slide", true);
+        }
+        else if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+        {
+            myAnimator.SetBool("slide", false);
+        }
+
+        /*End Episode 7*/
+
+
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal)); // #5
     }
@@ -67,6 +84,7 @@ public class Player : MonoBehaviour
         {
             myAnimator.SetTrigger("attack");
             myRigidbody.velocity = Vector2.zero;//reset velocity when attacking
+
         }
     }
 
@@ -77,6 +95,17 @@ public class Player : MonoBehaviour
         {
             attack = true;
         }
+
+        /*Episode 7*/
+
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            slide = true;
+        }
+
+        /*End Episode 7*/
+
+
     }
 
     private void Flip(float horizontal)
@@ -97,5 +126,6 @@ public class Player : MonoBehaviour
     private void ResetValues()
     {
         attack = false;
+        slide = false;//#7
     }
 }
