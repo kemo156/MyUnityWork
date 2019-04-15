@@ -72,12 +72,20 @@ public class Player : MonoBehaviour
 
         HandleAttacks(); //#6
 
+        HandleLayers();//#10
+
         ResetValues();//#6
     }
 
     private void HandleMovement(float horizontal)
     {
+        //#10 Start
+        if(myRigidbody.velocity.y < 0)
+        {
+            myAnimator.SetBool("land", true);
+        }
 
+        //#10 End
         if(!myAnimator.GetBool("slide") && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && (isGrounded || airControl))
             //#6 //#7 added !myAnimator.GetBool("slide")   //#9 added && (isGrounded || airControl))
         {
@@ -89,6 +97,7 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
             myRigidbody.AddForce(new Vector2(0, jumpForce));
+            myAnimator.SetTrigger("jump");//#10
         }
 
         /*End Episode 9*/
@@ -186,6 +195,8 @@ public class Player : MonoBehaviour
                 {
                     if(colliders[i].gameObject != gameObject)
                     {
+                        myAnimator.ResetTrigger("jump");//#10
+                        myAnimator.SetBool("land", false);//#10
                         return true;
                     }
                 }
@@ -193,5 +204,19 @@ public class Player : MonoBehaviour
         }
         return false;
 
+    }
+
+    //#EP10
+
+    private void HandleLayers()
+    {
+        if(!isGrounded)
+        {
+            myAnimator.SetLayerWeight(1, 1);
+        }
+        else
+        {
+            myAnimator.SetLayerWeight(1, 0);
+        }
     }
 }
