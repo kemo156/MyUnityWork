@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
 
     private bool isGrounded;
 
+    private bool jumpAttack;
+
     private bool jump;
 
     [SerializeField]
@@ -124,12 +126,24 @@ public class Player : MonoBehaviour
     //#6
     private void HandleAttacks()
     {
-        if(attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        if(attack && isGrounded && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) //#11 isGrounded
         {
             myAnimator.SetTrigger("attack");
             myRigidbody.velocity = Vector2.zero;//reset velocity when attacking
 
         }
+        /*Episode 11*/
+        if(jumpAttack && !isGrounded && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("JumpAttack"))
+        {
+            myAnimator.SetBool("jumpAttack", true);
+        }
+        if(!jumpAttack && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("JumpAttack"))
+        {
+            myAnimator.SetBool("jumpAttack", false);
+        }
+
+        /*End 9*/
+
     }
 
     //#6
@@ -147,16 +161,23 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             attack = true;
+            
+            jumpAttack = true; //#Ep11
+            
         }
 
         /*Episode 7*/
 
-        if(Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             slide = true;
         }
 
         /*End Episode 7*/
+
+       
+
+
 
 
     }
@@ -181,6 +202,7 @@ public class Player : MonoBehaviour
         attack = false;
         slide = false;//#7
         jump = false; //#9
+        jumpAttack = false;//#10
     }
 
     private bool IsGrounded()//#9
