@@ -1,0 +1,7 @@
+1. Click the Player below the Main Camera and on the right side click the "Add Component" button
+
+2. Type "Rigidbody 2D" and type "0" on Gravity Scale so that the character will not fall.
+
+3. Go to "Script" folder right click "Create" select "C# Script" and rename it to "Player" and drag the script above on the "Player" below the Main Camera
+
+4. Double Click the "Player" Script so that the code editor will open.
