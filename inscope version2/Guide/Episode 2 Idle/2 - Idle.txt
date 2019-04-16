@@ -1,0 +1,7 @@
+1. Select all Idle animations on Character folder From Idle___000 to Idle___009 and drag it at the top.
+
+2. Animations and Controllers will be displayed on the character make sure to separate the Animations folder and Controllers Folder. Also make sure to rename the Animations to "Idle".
+
+3. Rename also the Controllers on the Controllers Folder to "PlayerController" and this will be the first and last controller to be used on all cycle.
+
+4. Rename also above to "Player"
