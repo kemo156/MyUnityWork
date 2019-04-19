@@ -1,0 +1,10 @@
+1. Go to your Sprites folder - Character and locate the attack sprites
+ex. Attack__0 to Attack__009
+
+2. Drage on to your screen below the main camera and player
+
+3. Delete the Scene ex. Attack__009 above
+
+4. Delete also the control below and drag the animation to the Animations folder and rename to "Attack" see pic1.png
+
+5. Select the Player below the main camera and click Animator tab and drag the Attack animation on the Animator scene see pic2

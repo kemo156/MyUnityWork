@@ -1,0 +1,13 @@
+1. Go to the sprites folder and select the character folder and select Run__000 to Run__009 and just delete the Run__003 on the scene below the main camera and player and also the Run__003 controller and drage the animation to the Animations folder and rename it to "Run"
+
+2. Select the Player below the main camera and select the Animator tab at the center located and drag the Run animation at the Animator scene see pic1.png
+
+3. Add transition by right clicking the orange button "Idle" and select "Make transition" and when you click play button the character will instantly run.
+
+4. click the white arrow between run and idle and uncheck Has Exit Time and Fixed Duration and set the Transition Duration to 0 see pic2.png. This will run the character only if you will have a condition on it.
+
+5. click again the white arrow but first select the "Parameters tab" and click the plus "+" symbol and select Float and rename it to "speed" and on the right side below you will see "Conditions" hit the plus button and select speed and set it to 0.01 see pic3.png
+
+6. Make another transition right click "Run" and select "Make a transition" back to Idle and also remove the exit time and fixed duration and make the transition duration to 0. Set also the condition of the speed to "Less" and set it 0.01 see pic4.png try and test it if you hit "speed" to 1 the player run but 0 player stops and goes back to idle.
+
+7. Click Player below main camera and you will see on the right side an "Animator", here you will create a reference for the animator. Please see Player.cs for the code.

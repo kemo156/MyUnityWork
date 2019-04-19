@@ -1,0 +1,6 @@
+1. Refer on Player.cs on this folder
+
+2. Go to the unity application and click "Player" below the "Main Camera" and on the top right you will see below the "Transform" you will see "Scale"
+
+3. If you want to flip your character on opposite direction, you will just change the X axis from 1 to -1 see "pic1.png"
+
