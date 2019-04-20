@@ -1,10 +1,60 @@
 1. Go to your Sprites folder - Character and locate the attack sprites
 ex. Attack__0 to Attack__009
 
-2. Drage on to your screen below the main camera and player
+2. Drag on to your screen below the main camera and player
 
 3. Delete the Scene ex. Attack__009 above
 
 4. Delete also the control below and drag the animation to the Animations folder and rename to "Attack" see pic1.png
 
-5. Select the Player below the main camera and click Animator tab and drag the Attack animation on the Animator scene see pic2
+5. Select the Player below the main camera and click Animator tab and drag the Attack animation on the Animator and rename it to "Attack" scene see pic2
+
+6. » Right click the "Run" and select make transition to the "Attack" animator
+   » Right click the "Idle" and select make transition to the "Attack" animator
+   
+  We dont want to able to run and attack at the same time because we run the attack animation is not made for running
+  and attacking he simply just stops moving his legs and he attacks so heres what we do: To prevent any weird movement we will not be able to transition from attack back to run we will have to go to the idle and then from the idle to the run if anything if we put Stoke the button
+
+   » Right click the "Attack" and select make transition to the "Idle" animator
+   so then we will be able to go to attack from run but will not be able to run back to run here we'll go to idle so it stand still and then move to the run animation. see pic3.PNG
+
+
+7. Click the arrow in between the "Run" and "Attack" animation and on the right side uncheck Has Exit Time" and "Fix Duration" and set the "Transition Duration" to 0.
+  Same goes to "Attack" to "Idle" arrow and "Idle" to "Attack" arrow see pic4.PNG
+
+8. We will have to make a transition from idle to attack or make a condition and the same goes for the Run and we chose "trigger" condition can be triggered
+
+  » bool - true or false
+  » trigger - need to be triggered and executed whatever is on the other side of the trigger
+
+  in order to executer just click on the "Parameters" tab and click the plus "+" sign and select "Trigger" and rename it to "attack"
+
+  select the "arrow" in between "Run" and "Attack" and on the bottom right you will see "Conditions" and click the "+" plus button and select "attack"; same with the "Idle" to "Attack" see pic5.PNG
+
+9. Enable the "Has Exit Time","Fix Duration" and set "Transition Duration" to 0.25 in between "Attack" to "Idle" arrow see pic6.PNG since we will simply need to go from attack to idle when hes done attacking so we would not need to trigger anything we wanted to do this by itself so when the attack animation is done we transition down to idle so has exit time needs to be selected.
+
+10. If your character will move on the left when attacking and you want it to keep steady on where the character stands just simply do this: dont stop the game while adjusting.
+   » Go to the Sprites folder » Characters Folder » select all the attack animations and you will see at the top right "Pivot" select "Custom" and set the X: 0.23 Y: 0.54 hit apply. If you think its not good just select again the attack sprite and select "Custom" and the X and Y in your perspective. for now we use X: 0.23 and Y: 0.54 for tutorial purposes. See pic7.PNG
+
+
+11. Trigger it on our script. Player.cs
+
+12. On the Attack animation uncheck the "Loop Time" see pic8.PNG
+
+13. Add tag name for the Attack animator to "Attack" see pic9.PNG in order for the handlemovement to know what to do.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
