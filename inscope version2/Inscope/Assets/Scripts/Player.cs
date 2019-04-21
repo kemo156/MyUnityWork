@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     private bool attack;//#6
 
+    private bool slide;//#7
+
     private bool facingRight; //#ep4
 
    
@@ -47,13 +49,26 @@ public class Player : MonoBehaviour
     private void HandleMovement(float horizontal)
     {
         //#6 START this condition will stop the movement while attacking 17:00 mins ep 6
-        if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) // 0 is the base layer
+
+        //#7 !myAnimator.GetBool("slide") 
+        if(!myAnimator.GetBool("slide") && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) // 0 is the base layer
         {
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
         }
         //# END
 
-        
+        // #7 START
+        if(slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide")) //!this.myAnimator not playing the slide animation
+        {
+            myAnimator.SetBool("slide", true);
+        }
+        else if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+        {
+            myAnimator.SetBool("slide", false);
+        }
+        // #7 END 
+
+
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));//#5 horizontal must be resulting to 0 or 1
         
@@ -76,6 +91,13 @@ public class Player : MonoBehaviour
         {
             attack = true;
         }
+        // #7 START
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            slide = true;
+        }
+
+        // #7 END
     }
     //#6 End
 
@@ -99,6 +121,7 @@ public class Player : MonoBehaviour
     private void ResetValues()
     {
         attack = false;
+        slide = false; // #7
     }
 
     //#6 END

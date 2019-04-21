@@ -1,0 +1,14 @@
+1. Select the slide animation Slide___000 to Slide___009 and delete the above scene Slide___005 and controller and move the slide animation to the Animations folder and rename it to "Slide" and drag it on the animator tab see pic1.PNG
+
+2. Make a transition from Run to Slide and from Slide to Run Animation
+
+3. Implement the slide we use a Bool on the Parameters tab just click the plus "+" symbol and select Bool and rename it to "slide" see pic2.PNG
+
+4. From Run to Slide arrow just click the plus "+" symbol on the Conditions lower right side and select "slide". Uncheck the "Has Exit Time", "Fixed Duration" and set the Transitio Duration to zero see pic3.PNG
+
+5. Click on the Slide Animation below and uncheck the "Loop Time" see pic4.PNG so that the animator will not loop when sliding
+
+6. Go to script.
+
+
+The difference between using "Tag" name is because example if we are using an attack: we would like the character to attack while jumping, crouching + attacking, running + attacking etc.  But when you are not using tag ex. Slide it will be called once or name once.

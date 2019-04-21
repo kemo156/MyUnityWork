@@ -61,7 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Guide\Episode 6 Attack animation\Scripts\Player.cs">
+    <Compile Include="..\Guide\Episode 7 Slide Animation\Scripts\Player.cs">
       <Link>Assets\Scripts\Player.cs</Link>
     </Compile>
     <Reference Include="Unity.TextMeshPro.Editor">
