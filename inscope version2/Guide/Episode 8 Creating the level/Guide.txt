@@ -1,0 +1,40 @@
+1. Open Tiles folder and select tiles 1 2 and 3 one by one at the top below the Player and rename the 1 to LeftSide 2 Filler and 3 RightSide and select them all (1,2 and 3) and set the Scale on the right side below the Transform in X: 2 Y: 2 and Z: 2. See pic1.PNG
+
+2. Place the leftSide on the Left part of the screen also the filler right next on the leftSide.
+
+3. To make it easier and make the parent of the ground pieces just click the "Create" at the top of the Main Camera and select "Create Empty" rename it to "BottomGround" and place the LeftSide, Filler and RightSide inside the "BottomGround" see pic2.PNG
+
+4. place the RightSide tile on the right part of the camera see pic3.PNG
+
+5. Duplicate the filler until it will gather space by pressing Ctrl+D for this example x4 filler duplicated and move the RightSide a little bit on the left to gather spa space see pic4.PNG
+
+6. Rename the Filler(1),(2),(3) etc. to Filler. Make an order ex: LeftSide, Filler(x4), RightSide see pic5.PNG
+
+7. Click the BG folder and drag the BG at the top to add the scene and move in between "Player" and "BottomGround" and scale it to X: 3.8 and Y: 3.8 and move a upwards to equal the camera see pic6.PNG
+
+8. Make sure the BG will be behind , to do that click "BG" and on the right side below the Sprite Renderer, set the Order in Layer to -10 while on the "BottomGround" select all the child and set teh Order in Layer see pic7.PNG
+
+"0" - Middle
+"-10" - Behind
+"1" - Front
+
+9. Adjust the Main Camera Size from 5 to 7.7 and click the BG below the player and move it a little bit above so that no blue background will be seen.
+
+10. Click the BottomGround and move below in line with the camera position and move on the left side see pic8.PNG
+
+11. Select all child of the BottomGround and duplicate it by pressing Ctrl + D and move it to the right. See pic9.PNG
+
+12. Click the Tiles folder and select 17 and drag at the top and set the size to scale X,Y,Z to 2 see pic10.PNG
+
+13. Rename the 17 to "Water" and duplicate it and move the duplicated water on the right next to each other see pic11.PNG and set the Order In Layer to -2 to make it behind the tiles and place the water inside the BottomGround in between duplicated tiles see PIC12.PNG
+
+
+14. Click the Player and set the Gravity Scale back to 1 inside the Rigidbody2D.
+
+15. Click the Player again and click Add Component and search Box Collider 2D and adjust the box collider on the X and Y axis see pic13.PNG
+
+16. Click BottomGround and add Component "Box Collider 2D" and adjust it appropriately see pic14.PNG
+
+17. If the player will fall abnormally while running just simply click the "Player" above and go to the Rigidbody 2D and below the constraints check the Z see pic15.PNG
+
+18. Add another collider on the right side by clicking BottomGround and Add component and choose Box Collider 2D and move it on the right to fit appropriately.
