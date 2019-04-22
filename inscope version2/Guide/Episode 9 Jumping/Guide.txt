@@ -1,0 +1,1 @@
+1. To make a ground point to determine if the player is on the ground simply Click the Player below the main camera and click Create and select  Create Empty and move it as a child of the player

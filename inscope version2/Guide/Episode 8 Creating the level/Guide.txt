@@ -12,7 +12,7 @@
 
 7. Click the BG folder and drag the BG at the top to add the scene and move in between "Player" and "BottomGround" and scale it to X: 3.8 and Y: 3.8 and move a upwards to equal the camera see pic6.PNG
 
-8. Make sure the BG will be behind , to do that click "BG" and on the right side below the Sprite Renderer, set the Order in Layer to -10 while on the "BottomGround" select all the child and set teh Order in Layer see pic7.PNG
+8. Make sure the BG will be behind , to do that click "BG" and on the right side below the Sprite Renderer, set the Order in Layer to -10 while on the "BottomGround" select all the child and set the Order in Layer to -1 see pic7.PNG
 
 "0" - Middle
 "-10" - Behind
