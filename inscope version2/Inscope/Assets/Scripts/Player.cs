@@ -17,6 +17,28 @@ public class Player : MonoBehaviour
 
     private bool facingRight; //#ep4
 
+    //#9
+    [SerializeField]
+    private Transform[] groundPoints;//#ep9
+
+    [SerializeField]
+    private float groundRadius;
+
+    [SerializeField]
+    private LayerMask whatIsGround;
+
+    private bool isGrounded;
+
+    private bool jump;
+
+    [SerializeField]
+    private bool airControl;
+
+    [SerializeField]
+    private float jumpForce;
+
+    
+    //#9
    
     void Start()
     {
@@ -37,6 +59,8 @@ public class Player : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
 
+        isGrounded = IsGrounded();//#9
+
         HandleMovement(horizontal);
 
         Flip(horizontal);//#4
@@ -50,12 +74,21 @@ public class Player : MonoBehaviour
     {
         //#6 START this condition will stop the movement while attacking 17:00 mins ep 6
 
-        //#7 !myAnimator.GetBool("slide") 
-        if(!myAnimator.GetBool("slide") && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) // 0 is the base layer
+        //#7 !myAnimator.GetBool("slide")                                                                  //#9  && isGrounded || airControl
+        if (!myAnimator.GetBool("slide") && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && (isGrounded || airControl)) // 0 is the base layer
         {
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
         }
         //# END
+
+        //#9 START
+        if(isGrounded && jump)
+        {
+            isGrounded = false;
+            myRigidbody.AddForce(new Vector2(0, jumpForce));
+        }
+
+        //#9 END
 
         // #7 START
         if(slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide")) //!this.myAnimator not playing the slide animation
@@ -87,6 +120,13 @@ public class Player : MonoBehaviour
 
     private void HandleInput() // handle all our input for attacking jumping and so on
     {
+
+        //#9 Start
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump = true;
+        }
+        //#9 END
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             attack = true;
@@ -122,7 +162,30 @@ public class Player : MonoBehaviour
     {
         attack = false;
         slide = false; // #7
+        jump = false;//#9
     }
 
     //#6 END
+
+    //#9 START
+    private bool IsGrounded()
+    {
+        if(myRigidbody.velocity.y <= 0)
+        {
+            foreach (Transform point in groundPoints)
+            {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, groundRadius, whatIsGround);
+
+                for(int i = 0; i < colliders.Length; i++)
+                {
+                    if(colliders[i].gameObject != gameObject)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    //#9 END
 }
