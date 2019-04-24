@@ -1,0 +1,40 @@
+1. Go to Characters folder > sprites > Character and select Jump__000 to Jump__006 is the jump up animation drag up to your scene delete the scene and the controller and rename the animation to "TakeOff" and move it on the animations folder and select Jump__007 to Jump__009 drag up and delete the jump scene and controller and rename the animation to "Landing" and move it to the animations folder.
+
+
+2. Click player select the animator tab and click layers tab and rename the Base Layer to "GroundLayer", click + and Name it to AirLayer see pic1.PNG
+
+GroundLayer = Controlling animation on the ground
+
+AirLayer = Controlling animation on the air ex. jumping attack, jumping , taking off
+
+3. Click AirLayer and on the animations folder drag the "TakeOff" animation on the animator scene and "Landing" see pic2.PNG
+
+4. On the animations folder click Landing and on the top right inspector tab uncheck Loop Time also with the TakeOff animation to uncheck the loop time see pic3.PNG
+
+5. On the Animator tab of the AirLayer right click anystate and make transition to take off see pic4.png
+
+6. Click the arrow in between AnyState and TakeOff Uncheck Fixed Duration and set 0 on Transition Duration and uncheck Can Transition To see pic5.png
+
+7. Right Click TakeOff and make transition to Landing and in between click the arrow and uncheck Has Exit Time and Fixed Duration and set the Transition Duration to 0.
+
+8. Click on the Parameters tab and click the + and select Bool and rename it to "land" see pic6.PNG
+
+9. Click the arrow in between landing and take off and on the Conditions tab and select the land parameter and set it to true see pic7.PNG
+
+10. Click arrow in between TakeOff and Any State and on the Conditions tab select land to false see pic8.PNG
+
+11. On the animator tab scene right click and select Create State » Empty and delete the the arrow in between any state and take off and make transition from new state to TakeOff see pic9.PNG
+
+12. On the Parameters tab click + and select a trigger and name it to jump see pic10.PNG
+
+13. Right click the New State and select "Set as Layer Default State" to make it orange color and rename it to DefaultState see pic11.PNG
+
+14. click the arrow in between the DefaultState and TakeOff and on the right side uncheck the Has Exit Time and Fixed Duration and set Transition Duration to 0 and on the conditions tab clic the + and select jump see pic12.PNG
+
+15. Make transition from Landing to DefaultState and click the arrow between it and uncheck the Has Exit Time and Fixed Duration and set Transition Duration to 0 see pic13.PNG and on the conditions tab select land and set it to false. see pic13.PNG
+
+
+
+we end and 13:00 
+
+https://www.youtube.com/watch?v=5ghbRb0bBJs&list=PLX-uZVK_0K_6VXcSajfFbXDXndb6AdBLO&index=10
