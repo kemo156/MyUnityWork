@@ -37,9 +37,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float jumpForce;
 
-    
+
     //#9
-   
+
     void Start()
     {
         facingRight = true;//#4
@@ -67,12 +67,22 @@ public class Player : MonoBehaviour
 
         HandleAttacks();//#6
 
+        HandleLayers();//#10
+
         ResetValues(); //#6
     }
 
     private void HandleMovement(float horizontal)
     {
+        //#10 Start
+        if(myRigidbody.velocity.y < 0)
+        {
+            myAnimator.SetBool("land", true);
+        }
+        //#10 End
+
         //#6 START this condition will stop the movement while attacking 17:00 mins ep 6
+
 
         //#7 !myAnimator.GetBool("slide")                                                                  //#9  && isGrounded || airControl
         if (!myAnimator.GetBool("slide") && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && (isGrounded || airControl)) // 0 is the base layer
@@ -82,20 +92,21 @@ public class Player : MonoBehaviour
         //# END
 
         //#9 START
-        if(isGrounded && jump)
+        if (isGrounded && jump)
         {
             isGrounded = false;
             myRigidbody.AddForce(new Vector2(0, jumpForce));
+            myAnimator.SetTrigger("jump");//#10 16:00
         }
 
         //#9 END
 
         // #7 START
-        if(slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide")) //!this.myAnimator not playing the slide animation
+        if (slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide")) //!this.myAnimator not playing the slide animation
         {
             myAnimator.SetBool("slide", true);
         }
-        else if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+        else if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
         {
             myAnimator.SetBool("slide", false);
         }
@@ -104,13 +115,13 @@ public class Player : MonoBehaviour
 
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));//#5 horizontal must be resulting to 0 or 1
-        
+
     }
 
     //#6 Start
     private void HandleAttacks()
     {
-        if(attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) //#6 && !this never start attack before the orginal attack is done
+        if (attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) //#6 && !this never start attack before the orginal attack is done
         {
             myAnimator.SetTrigger("attack");
 
@@ -127,7 +138,7 @@ public class Player : MonoBehaviour
             jump = true;
         }
         //#9 END
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             attack = true;
         }
@@ -144,7 +155,7 @@ public class Player : MonoBehaviour
     //#4
     private void Flip(float horizontal)
     {
-        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
+        if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
         {
             facingRight = !facingRight;
 
@@ -170,16 +181,18 @@ public class Player : MonoBehaviour
     //#9 START
     private bool IsGrounded()
     {
-        if(myRigidbody.velocity.y <= 0)
+        if (myRigidbody.velocity.y <= 0)
         {
             foreach (Transform point in groundPoints)
             {
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, groundRadius, whatIsGround);
 
-                for(int i = 0; i < colliders.Length; i++)
+                for (int i = 0; i < colliders.Length; i++)
                 {
-                    if(colliders[i].gameObject != gameObject)
+                    if (colliders[i].gameObject != gameObject)
                     {
+                        myAnimator.ResetTrigger("jump");//#10
+                        myAnimator.SetBool("land", false);//#10
                         return true;
                     }
                 }
@@ -188,4 +201,19 @@ public class Player : MonoBehaviour
         return false;
     }
     //#9 END
+
+    //#10
+    private void HandleLayers()
+    {
+        if (!isGrounded)
+        {
+            myAnimator.SetLayerWeight(1, 1); // explain at 14:20
+        }
+        else
+        {
+            myAnimator.SetLayerWeight(1, 0);
+        }
+    }
+
+    //#10 END
 }

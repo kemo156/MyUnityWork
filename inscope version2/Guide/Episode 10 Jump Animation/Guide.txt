@@ -33,8 +33,8 @@ AirLayer = Controlling animation on the air ex. jumping attack, jumping , taking
 
 15. Make transition from Landing to DefaultState and click the arrow between it and uncheck the Has Exit Time and Fixed Duration and set Transition Duration to 0 see pic13.PNG and on the conditions tab select land and set it to false. see pic13.PNG
 
+16. Go to script
 
+17. "Time 20:26" On Animator Tab, make a transition from DefaultState to Landing and click the arrow in between and click the "+" on conditions and select "land" and set to true and uncheck Has Exit Time , fxed Duration and Transition Duration to 0. 
 
-we end and 13:00 
-
-https://www.youtube.com/watch?v=5ghbRb0bBJs&list=PLX-uZVK_0K_6VXcSajfFbXDXndb6AdBLO&index=10
+18. Click TakeOff animator scene and set the Speed on top right corner to 2 and on the Landing scene change the Speed to 2 also. see pic15.PNG
