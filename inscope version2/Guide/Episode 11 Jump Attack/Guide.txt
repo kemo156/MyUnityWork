@@ -1,0 +1,25 @@
+"Instruction001 > Uncheck the Exit Time and Fixed Duration and set Transition Duration to 0"
+
+
+
+1. Go to sprites > Characters > select JumpAttack000 to JumpAttack009 drag at the top and delete the scene and controller and move the animation to the animations folder and rename to JumpAttack
+
+2. Go to Layters tab and Select AirLayer tab and drag the JumpAttack animation to the animator and make transition from TakeOff to JumpAttack and from Landing to JumpAttack and JumpAttack to Landing see pic1.png
+
+3. Click on the parameters tab and plus and select bool and rename to jumpAttack
+
+4. On the arrow in between TakeOff and JumpAttack follow step Instuction001. and set the condition by selecting jumpAttack and set to true see pic2.png
+
+5. Same goes with the arrow in between Landing and JumpAttack follow step 4.
+
+6. from JumpAttack to Landing just leave as it is.
+
+7. Select the arrow from DefaultState to TakeOff and select the condition to jumpAttack to false. see pic3.PNG
+
+8. Adjust the character so that no awkward landing may occur go to Sprites > Character and select JumpAttack000 to JumpAttack009 and on the upper right select pivot > custom and set the X 0.38 and Y 0.5 and hit apply, see pic4.PNG
+
+9. In order the player to attack when close to the ground click the Layers tab and go to Animations folder and select attack and drag on the animator scene and rename it from Attack 0 to LandAttack and make transtion from Any State to LandAttack and select the arrow between Any State to Land Attack and select conditions jumpAttack to true see pic5.PNG
+
+10. make transition from LandAttack to Idle 
+
+11. click the arrow in between Any State to LandAttack and follow Instruction001 and uncheck Can Transition To. See pic6.PNG
