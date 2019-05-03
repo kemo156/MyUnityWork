@@ -1,0 +1,26 @@
+1. Go to Sprites folder > Tiles and drag the tiles 13,14,15 above one at the time see pic1.PNG
+
+2. Select 13 - 15 and set X,Y,Z to 2 to make it bigger and adjust and make 14 center and rename the 13 to "Left" 14 to "Filler" and 15 to "Right" see pic2.PNG
+
+3. Above the main camera you will see small word "Create" and click it and select Create Empty and rename it to MediumPlatform and drag the Left,Filler,Right inside the created empty MediumPlatform see pic3.PNG
+
+4. Duplicate the MediumPlatform and call it SmallPlatform and delete the filler and adjust to make it one inside of it see pic4.PNG
+
+5. the Child of MediumPlatForm and SmallPlatform will be selected and Change the Order in Layer to -1 see pic5.PNG
+
+6. Click the SmallPlatform > Add Component and select Box Collider 2D and disable the BG by unchecking it to make the collider visible see pic6.PNG
+
+7. Click the SmallPlatform and another Boxcolider2d and right click and copy the component of the first box collider and paste the component on the new to make the same dimensions see pic7.PNG
+
+8. Check the "Is Trigger" on the second Box Collider 2D and move it a little down by adjusting the y axis and make it a little wider by adjusting the x axis size see pic8.PNG
+
+9. Go to Scripts folder and right and inside right click and select Create > C# Script and rename to CollisionTrigger and drag the script to the SmallPlatform see pic9.PNG
+
+10. Double click the CollisionTrigger script to open the editor.
+
+11. 9:00 on the first Box Collider 2D drag it and drop it on the second collider under the Platform Collider see pic10.PNG
+
+12. Go to script again
+
+13. Drag the 2nd Box Collider to the newly created Platform Trigger below and see pic11.PNG
+
