@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
 
     private bool jump;
 
+    private bool jumpAttack;//#11
+
     [SerializeField]
     private bool airControl;
 
@@ -75,7 +77,7 @@ public class Player : MonoBehaviour
     private void HandleMovement(float horizontal)
     {
         //#10 Start
-        if(myRigidbody.velocity.y < 0)
+        if (myRigidbody.velocity.y < 0)
         {
             myAnimator.SetBool("land", true);
         }
@@ -121,12 +123,25 @@ public class Player : MonoBehaviour
     //#6 Start
     private void HandleAttacks()
     {
-        if (attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) //#6 && !this never start attack before the orginal attack is done
+        //#11 && isGrounded
+        if (attack && isGrounded && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) //#6 && !this never start attack before the orginal attack is done
         {
             myAnimator.SetTrigger("attack");
 
             myRigidbody.velocity = Vector2.zero; //#6 stop sliding while player is attacking
         }
+
+        //#11 Start
+        if (jumpAttack && !isGrounded && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("JumpAttack"))
+        {
+            myAnimator.SetBool("jumpAttack", true);
+        }
+        if (!jumpAttack && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("JumpAttack"))
+        {
+            myAnimator.SetBool("jumpAttack", false);
+        }
+
+        //# End
     }
 
     private void HandleInput() // handle all our input for attacking jumping and so on
@@ -141,6 +156,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             attack = true;
+            jumpAttack = true; //#11;
         }
         // #7 START
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -174,6 +190,7 @@ public class Player : MonoBehaviour
         attack = false;
         slide = false; // #7
         jump = false;//#9
+        jumpAttack = false;//#10
     }
 
     //#6 END
