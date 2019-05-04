@@ -1,0 +1,13 @@
+1. Make a LargePlatform on the prefab folder see pic1.PNG
+
+2. Click the BG and move accordingly where the camera is in placed see pic2.PNG
+
+3. Click the BG and select the Rec Tool above and stretch the background to fit accordingly see pic3.PNG
+
+4. Create script to follow the player go to Scripts folder > right click > Create > C# Script and rename it to CameraFollow and drag at the top inside Main Camera and double click the script. see pic4.PNG
+
+5. set up the camera flow of X,Y Max and X,Y Min on 3:50 mark and Move the camera at the top and also the player see pic5.PNG
+
+6. to create a crate just add two box collider 2d see pic6.PNG
+
+7. Click the crate and add component script and type Collision Trigger drag the first collider2D for the Platform Collider while the second Box Collider 2D on the Platform Trigger see pic7.PNG see pic7.PNG
