@@ -17,12 +17,23 @@ public class CollisionTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        platformCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
+        playerCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
         Physics2D.IgnoreCollision(platformCollider, platformTrigger, true); //do this once you are done on step 11
     }
 
     private void OnTriggerEnter2D(Collider2D other)//11:29
     {
-        
+        if(other.gameObject.name == "Player")
+        {
+            Physics2D.IgnoreCollision(platformCollider, playerCollider, true);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other) //makalayat siya kung ang player naas tunga2 sa collider sa babaw
+    {
+        if(other.gameObject.name == "Player")
+        {
+            Physics2D.IgnoreCollision(platformCollider, playerCollider, false);
+        }
     }
 }

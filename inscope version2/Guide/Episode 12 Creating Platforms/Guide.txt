@@ -24,3 +24,8 @@
 
 13. Drag the 2nd Box Collider to the newly created Platform Trigger below and see pic11.PNG
 
+14. 15:00 duplicate the SmallPlatform 2 times and drag the MediumPlatform on the right side see pic12.PNG
+
+15. Delete the MediumPlatform and duplicate once more the SmallPlatform insert the 14 tile on tiles folder and rename the SmallPlatform to Medium and set the scale XYZ to 2 and rename the 14 to filler and adjust the collider accordingly. See pic13.PNG
+
+16. Create prefab by right clicking the Assets folder > Create > Folder and rename to Prefab and drag the Medium and SmallPlatform inside the Prefab folder see pic14.PNG
